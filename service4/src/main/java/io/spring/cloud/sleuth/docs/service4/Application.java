@@ -20,7 +20,8 @@ public class Application {
 	@Autowired RestTemplate restTemplate;
 
 	@RequestMapping("/baz")
-	public String start() {
+	public String start() throws InterruptedException {
+		Thread.sleep(400);
 		log.info("Hello from service4");
 		return "Hello from service4";
 	}

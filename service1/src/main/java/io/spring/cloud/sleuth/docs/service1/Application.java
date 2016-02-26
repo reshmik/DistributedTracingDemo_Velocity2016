@@ -20,9 +20,10 @@ public class Application {
 	@Autowired RestTemplate restTemplate;
 
 	@RequestMapping("/start")
-	public String start() {
+	public String start() throws InterruptedException {
 		log.info("Hello from service1. Calling service2");
 		String response = restTemplate.getForObject("http://localhost:8082/foo",String.class);
+		Thread.sleep(100);
 		log.info("Got response from service2 [{}]", response);
 		return response;
 	}
