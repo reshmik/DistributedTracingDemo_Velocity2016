@@ -1,0 +1,7 @@
+server.port: 8081
+spring:
+  application:
+    name: service1
+  sleuth:
+    sampler:
+      percentage: 1.0
