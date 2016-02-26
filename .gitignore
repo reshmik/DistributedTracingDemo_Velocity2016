@@ -14,3 +14,7 @@ _site/
 .factorypath
 *.log
 .gradle
+*.jar
+*/build/**
+*.class
+build/

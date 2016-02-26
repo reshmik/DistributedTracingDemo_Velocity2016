@@ -1,0 +1,322 @@
+===== SENT TO ZIPKIN ======
+
+SERVICE 1 {"traceId":"6497bb6aa5b10776","name":"http:/start","id":"6497bb6aa5b10776","timestamp":1456487125176000,"duration":29000,"annotations":[{"endpoint":{"serviceName":"service1","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125181000,"value":"cs"},{"endpoint":{"serviceName":"service1","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125203000,"value":"cr"}],"binaryAnnotations":[{"key":"http.url","value":"http://localhost:8081/start","endpoint":{"serviceName":"service1","ipv4":"10.69.252.83","port":65535}},{"key":"http.host","value":"localhost","endpoint":{"serviceName":"service1","ipv4":"10.69.252.83","port":65535}},{"key":"http.path","value":"/start","endpoint":{"serviceName":"service1","ipv4":"10.69.252.83","port":65535}},{"key":"http.method","value":"GET","endpoint":{"serviceName":"service1","ipv4":"10.69.252.83","port":65535}}]}
+
+SERVICE 2
+{"traceId":"6497bb6aa5b10776","name":"http:/start","id":"6497bb6aa5b10776","timestamp":1456487125186000,"duration":17000,"annotations":[{"endpoint":{"serviceName":"service2","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125186000,"value":"sr"},{"endpoint":{"serviceName":"service2","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125203000,"value":"ss"}],"binaryAnnotations":[]}
+SERVICE 2
+{"traceId":"6497bb6aa5b10776","name":"http:/foo","id":"18bfe57b90996a29","parentId":"6497bb6aa5b10776","timestamp":1456487125186000,"duration":18000,"annotations":[{"endpoint":{"serviceName":"service2","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125189000,"value":"cs"},{"endpoint":{"serviceName":"service2","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125195000,"value":"cr"},{"endpoint":{"serviceName":"service2","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125195000,"value":"cs"},{"endpoint":{"serviceName":"service2","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125201000,"value":"cr"}],"binaryAnnotations":[{"key":"http.url","value":"http://localhost:8082/foo","endpoint":{"serviceName":"service2","ipv4":"10.69.252.83","port":65535}},{"key":"http.host","value":"localhost","endpoint":{"serviceName":"service2","ipv4":"10.69.252.83","port":65535}},{"key":"http.path","value":"/foo","endpoint":{"serviceName":"service2","ipv4":"10.69.252.83","port":65535}},{"key":"http.method","value":"GET","endpoint":{"serviceName":"service2","ipv4":"10.69.252.83","port":65535}}]}
+
+SERVICE 3
+{"traceId":"6497bb6aa5b10776","name":"http:/foo","id":"18bfe57b90996a29","parentId":"6497bb6aa5b10776","timestamp":1456487125191000,"duration":4000,"annotations":[{"endpoint":{"serviceName":"service3","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125191000,"value":"sr"},{"endpoint":{"serviceName":"service3","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125195000,"value":"ss"}],"binaryAnnotations":[]}
+
+SERVICE 3
+{"traceId":"6497bb6aa5b10776","name":"http:/bar","id":"d0f4456b5992498a","parentId":"18bfe57b90996a29","timestamp":1456487125191000,"duration":5000,"annotations":[],"binaryAnnotations":[{"key":"http.url","value":"http://localhost:8083/bar","endpoint":{"serviceName":"service3","ipv4":"10.69.252.83","port":65535}},{"key":"http.host","value":"localhost","endpoint":{"serviceName":"service3","ipv4":"10.69.252.83","port":65535}},{"key":"http.path","value":"/bar","endpoint":{"serviceName":"service3","ipv4":"10.69.252.83","port":65535}},{"key":"http.method","value":"GET","endpoint":{"serviceName":"service3","ipv4":"10.69.252.83","port":65535}}]}
+
+SERVICE 4
+{"traceId":"6497bb6aa5b10776","name":"http:/foo","id":"18bfe57b90996a29","parentId":"6497bb6aa5b10776","timestamp":1456487125197000,"duration":4000,"annotations":[{"endpoint":{"serviceName":"service4","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125197000,"value":"sr"},{"endpoint":{"serviceName":"service4","ipv4":"10.69.252.83","port":65535},"timestamp":1456487125201000,"value":"ss"}],"binaryAnnotations":[]}
+
+SERVICE 4
+{"traceId":"6497bb6aa5b10776","name":"http:/baz","id":"b221c5ed1255f30e","parentId":"18bfe57b90996a29","timestamp":1456487125197000,"duration":5000,"annotations":[],"binaryAnnotations":[{"key":"http.url","value":"http://localhost:8084/baz","endpoint":{"serviceName":"service4","ipv4":"10.69.252.83","port":65535}},{"key":"http.host","value":"localhost","endpoint":{"serviceName":"service4","ipv4":"10.69.252.83","port":65535}},{"key":"http.path","value":"/baz","endpoint":{"serviceName":"service4","ipv4":"10.69.252.83","port":65535}},{"key":"http.method","value":"GET","endpoint":{"serviceName":"service4","ipv4":"10.69.252.83","port":65535}}]}
+
+===== FROM QUERY SERVER =======
+
+[
+    {
+        "annotations": [
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service1"
+                },
+                "timestamp": 1456487125178500,
+                "value": "cs"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service2"
+                },
+                "timestamp": 1456487125183500,
+                "value": "sr"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service1"
+                },
+                "timestamp": 1456487125200500,
+                "value": "cr"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service2"
+                },
+                "timestamp": 1456487125200500,
+                "value": "ss"
+            }
+        ],
+        "binaryAnnotations": [
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service1"
+                },
+                "key": "http.host",
+                "value": "localhost"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service1"
+                },
+                "key": "http.method",
+                "value": "GET"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service1"
+                },
+                "key": "http.path",
+                "value": "/start"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service1"
+                },
+                "key": "http.url",
+                "value": "http://localhost:8081/start"
+            }
+        ],
+        "duration": 29000,
+        "id": "6497bb6aa5b10776",
+        "name": "http:/start",
+        "timestamp": 1456487125178500,
+        "traceId": "6497bb6aa5b10776"
+    },
+    {
+        "annotations": [
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service2"
+                },
+                "timestamp": 1456487125185500,
+                "value": "cs"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service3"
+                },
+                "timestamp": 1456487125187500,
+                "value": "sr"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service2"
+                },
+                "timestamp": 1456487125191500,
+                "value": "cr"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service2"
+                },
+                "timestamp": 1456487125191500,
+                "value": "cs"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service3"
+                },
+                "timestamp": 1456487125191500,
+                "value": "ss"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service4"
+                },
+                "timestamp": 1456487125193500,
+                "value": "sr"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service2"
+                },
+                "timestamp": 1456487125197500,
+                "value": "cr"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service4"
+                },
+                "timestamp": 1456487125197500,
+                "value": "ss"
+            }
+        ],
+        "binaryAnnotations": [
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service2"
+                },
+                "key": "http.host",
+                "value": "localhost"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service2"
+                },
+                "key": "http.method",
+                "value": "GET"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service2"
+                },
+                "key": "http.path",
+                "value": "/foo"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service2"
+                },
+                "key": "http.url",
+                "value": "http://localhost:8082/foo"
+            }
+        ],
+        "duration": 4000,
+        "id": "18bfe57b90996a29",
+        "name": "http:/foo",
+        "parentId": "6497bb6aa5b10776",
+        "timestamp": 1456487125185500,
+        "traceId": "6497bb6aa5b10776"
+    },
+    {
+        "annotations": [],
+        "binaryAnnotations": [
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service4"
+                },
+                "key": "http.host",
+                "value": "localhost"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service4"
+                },
+                "key": "http.method",
+                "value": "GET"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service4"
+                },
+                "key": "http.path",
+                "value": "/baz"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service4"
+                },
+                "key": "http.url",
+                "value": "http://localhost:8084/baz"
+            }
+        ],
+        "duration": 5000,
+        "id": "b221c5ed1255f30e",
+        "name": "http:/baz",
+        "parentId": "18bfe57b90996a29",
+        "timestamp": 1456487125197000,
+        "traceId": "6497bb6aa5b10776"
+    },
+    {
+        "annotations": [],
+        "binaryAnnotations": [
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service3"
+                },
+                "key": "http.host",
+                "value": "localhost"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service3"
+                },
+                "key": "http.method",
+                "value": "GET"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service3"
+                },
+                "key": "http.path",
+                "value": "/bar"
+            },
+            {
+                "endpoint": {
+                    "ipv4": "10.69.252.83",
+                    "port": 65535,
+                    "serviceName": "service3"
+                },
+                "key": "http.url",
+                "value": "http://localhost:8083/bar"
+            }
+        ],
+        "duration": 5000,
+        "id": "d0f4456b5992498a",
+        "name": "http:/bar",
+        "parentId": "18bfe57b90996a29",
+        "timestamp": 1456487125191000,
+        "traceId": "6497bb6aa5b10776"
+    }
+]
