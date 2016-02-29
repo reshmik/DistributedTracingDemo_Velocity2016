@@ -38,6 +38,7 @@ public class StoringZipkinSpanReporter implements ZipkinSpanReporter {
 	@Autowired
 	public StoringZipkinSpanReporter(SpanReporterService spanReporterService, ZipkinProperties zipkin) {
 		delegate = new HttpZipkinSpanReporter(zipkin.getBaseUrl(), zipkin.getFlushInterval(),
+				zipkin.getCompression().isEnabled(),
 				spanReporterService);
 	}
 
