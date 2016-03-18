@@ -10,7 +10,7 @@ import com.google.common.collect.Multimaps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.sleuth.metric.SpanReporterService;
+import org.springframework.cloud.sleuth.metric.SpanMetricReporter;
 import org.springframework.cloud.sleuth.zipkin.HttpZipkinSpanReporter;
 import org.springframework.cloud.sleuth.zipkin.ZipkinProperties;
 import org.springframework.cloud.sleuth.zipkin.ZipkinSpanReporter;
@@ -36,10 +36,9 @@ public class StoringZipkinSpanReporter implements ZipkinSpanReporter {
 	private final HttpZipkinSpanReporter delegate;
 
 	@Autowired
-	public StoringZipkinSpanReporter(SpanReporterService spanReporterService, ZipkinProperties zipkin) {
+	public StoringZipkinSpanReporter(SpanMetricReporter spanMetricReporter, ZipkinProperties zipkin) {
 		delegate = new HttpZipkinSpanReporter(zipkin.getBaseUrl(), zipkin.getFlushInterval(),
-				zipkin.getCompression().isEnabled(),
-				spanReporterService);
+				zipkin.getCompression().isEnabled(), spanMetricReporter);
 	}
 
 	@RequestMapping("/spans/{traceId}")

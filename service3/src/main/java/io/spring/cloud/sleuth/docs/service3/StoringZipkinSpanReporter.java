@@ -1,16 +1,14 @@
 package io.spring.cloud.sleuth.docs.service3;
 
-import java.lang.invoke.MethodHandles;
-import java.util.Collection;
-
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
-
+import java.lang.invoke.MethodHandles;
+import java.util.Collection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.sleuth.metric.SpanReporterService;
+import org.springframework.cloud.sleuth.metric.SpanMetricReporter;
 import org.springframework.cloud.sleuth.zipkin.HttpZipkinSpanReporter;
 import org.springframework.cloud.sleuth.zipkin.ZipkinProperties;
 import org.springframework.cloud.sleuth.zipkin.ZipkinSpanReporter;
@@ -19,7 +17,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import zipkin.Span;
 
 /**
@@ -36,10 +33,9 @@ public class StoringZipkinSpanReporter implements ZipkinSpanReporter {
 	private final HttpZipkinSpanReporter delegate;
 
 	@Autowired
-	public StoringZipkinSpanReporter(SpanReporterService spanReporterService, ZipkinProperties zipkin) {
+	public StoringZipkinSpanReporter(SpanMetricReporter spanMetricReporter, ZipkinProperties zipkin) {
 		delegate = new HttpZipkinSpanReporter(zipkin.getBaseUrl(), zipkin.getFlushInterval(),
-				zipkin.getCompression().isEnabled(),
-				spanReporterService);
+				zipkin.getCompression().isEnabled(), spanMetricReporter);
 	}
 
 	@RequestMapping("/spans/{traceId}")
