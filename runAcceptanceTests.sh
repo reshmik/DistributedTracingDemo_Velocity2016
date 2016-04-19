@@ -140,11 +140,11 @@ echo -e "Zikpin server host is [${ZIPKIN_SERVER_HOST}]"
 
 # ======================================= TEST START =======================================
 
-echo -e "Running curl to initialize the flow of messages"
+echo -e "Running acceptance tests"
 
 cd $root
-ACCEPTANCE_TEST_OPTS="-DLOCAL_URL=http://${ZIPKIN_SERVER_HOST} -service.url=http://${SERVICE1_HOST} -Dzipkin.query.port=80"
+ACCEPTANCE_TEST_OPTS="-DLOCAL_URL=http://${ZIPKIN_SERVER_HOST} -DserviceUrl=http://${SERVICE1_HOST} -Dzipkin.query.port=80"
 echo -e "\n\nSetting test opts for sleuth stream to call ${ACCEPTANCE_TEST_OPTS}"
-./gradlew :acceptance-tests:acceptanceTests
+./gradlew :acceptance-tests:acceptanceTests "-DLOCAL_URL=http://${ZIPKIN_SERVER_HOST}" "-DserviceUrl=http://${SERVICE1_HOST}" "-Dzipkin.query.port=80" --stacktrace --no-daemon --configure-on-demand
 
 # ======================================= TEST END   =======================================

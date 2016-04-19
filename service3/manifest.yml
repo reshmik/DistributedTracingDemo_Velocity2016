@@ -5,6 +5,8 @@ applications:
   instances: 1
   host: docssleuth-service3
   path: build/libs/service3-1.0.0.jar
+  services:
+    - docssleuth-rabbitmq
   env:
     SPRING_PROFILES_ACTIVE: cloud
     DEBUG: "true"
