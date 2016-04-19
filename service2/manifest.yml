@@ -5,9 +5,6 @@ applications:
   instances: 1
   host: docssleuth-service2
   path: build/libs/service2-1.0.0.jar
-  services:
-    - docssleuth-service3
-    - docssleuth-service4
   env:
     SPRING_PROFILES_ACTIVE: cloud
     DEBUG: "true"
