@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -31,6 +32,11 @@ public class Application {
 		String service4 = restTemplate.getForObject("http://" + serviceAddress4 + "/baz", String.class);
 		log.info("Got response from service4 [{}]", service4);
 		return String.format("Hello from service2, response from service3 [%s] and from service4 [%s]", service3, service4);
+	}
+
+	@Bean
+	RestTemplate restTemplate() {
+		return new RestTemplate();
 	}
 
 	public static void main(String... args) {
