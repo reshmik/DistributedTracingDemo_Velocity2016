@@ -1,2 +1,2 @@
 rootProject.name = "doc-apps"
-include 'service1', 'service2', 'service3', 'service4'
+include 'service1', 'service2', 'service3', 'service4', 'zipkin-server', 'acceptance-tests'

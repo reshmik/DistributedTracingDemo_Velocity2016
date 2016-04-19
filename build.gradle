@@ -75,8 +75,6 @@ configure(subprojects) {
         compile "org.springframework.boot:spring-boot-starter-actuator"
         compile "org.springframework:spring-context-support"
         compile 'com.fasterxml.jackson.core:jackson-databind'
-        compile "org.codehaus.jackson:jackson-mapper-asl:$jacksonMapper"
-        compile "org.codehaus.jackson:jackson-core-asl:$jacksonMapper"
         compile "org.aspectj:aspectjrt"
 
         runtime 'cglib:cglib-nodep:3.1'

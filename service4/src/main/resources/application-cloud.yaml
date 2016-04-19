@@ -1,0 +1,1 @@
+spring.rabbitmq.addresses: ${vcap.services.docssleuth-rabbitmq.credentials.uri}
