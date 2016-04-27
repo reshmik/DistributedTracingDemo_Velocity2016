@@ -1,21 +1,13 @@
 #!/bin/bash
 
-
 set -o errexit
-root=`pwd`
 
-# ======================================= ENVS START =======================================
+# ======================================= FUNCTIONS START =======================================
 
 CLOUD_DOMAIN=${DOMAIN:-run.pivotal.io}
 CLOUD_TARGET=api.${DOMAIN}
 CLOUD_PREFIX="docssleuth"
 
-# ======================================= ENVS END   =======================================
-
-
-# ======================================= FUNCTIONS START =======================================
-
-# CLOUD FOUNDRY -- START
 
 function login(){
     cf api | grep ${CLOUD_TARGET} || cf api ${CLOUD_TARGET} --skip-ssl-validation
@@ -43,10 +35,6 @@ function deploy_app_with_name(){
     cd ..
 }
 
-function deploy_app_with_name_parallel(){
-    xargs -n 2 -P 4 bash -c 'deploy_app_with_name "$@"'
-}
-
 function deploy_service(){
     N=$1
     D=`app_domain $N`
@@ -65,7 +53,7 @@ function reset(){
 
 
 # ======================================= BUILD START =======================================
-
+root=`pwd`
 ./gradlew clean build --parallel
 
 # ======================================= BUILD END   =======================================
