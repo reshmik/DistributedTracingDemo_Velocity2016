@@ -67,13 +67,12 @@ configure(subprojects) {
         compile "org.springframework.boot:spring-boot-starter-web"
         compile "org.springframework:spring-web"
         compile 'org.apache.tomcat.embed:tomcat-embed-core:8.0.23'
-        compile "org.springframework.cloud:spring-cloud-starter-hystrix"
         compile "org.springframework.cloud:spring-cloud-starter-stream-rabbit"
         compile "org.springframework.cloud:spring-cloud-sleuth-stream"
         compile "org.springframework.boot:spring-boot-starter-actuator"
         compile "org.springframework:spring-context-support"
-        compile 'com.fasterxml.jackson.core:jackson-databind'
         compile "org.aspectj:aspectjrt"
+        compile "org.springframework.amqp:spring-amqp:${amqpVersion}"
 
         runtime 'cglib:cglib-nodep:3.1'
         runtime 'org.objenesis:objenesis:2.2'
@@ -81,7 +80,7 @@ configure(subprojects) {
     }
 
     wrapper {
-        gradleVersion '2.12'
+        gradleVersion '2.13'
     }
 
     bootRun {
