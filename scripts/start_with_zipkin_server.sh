@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DEFAULT_HEALTH_HOST=${DEFAULT_HEALTH_HOST:-localhost}
+mkdir -p build
 
 # build apps
 ./gradlew clean build --parallel
