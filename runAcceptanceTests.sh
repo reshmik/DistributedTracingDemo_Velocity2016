@@ -8,7 +8,6 @@ CLOUD_DOMAIN=${DOMAIN:-run.pivotal.io}
 CLOUD_TARGET=api.${DOMAIN}
 CLOUD_PREFIX="docssleuth"
 
-
 function login(){
     cf api | grep ${CLOUD_TARGET} || cf api ${CLOUD_TARGET} --skip-ssl-validation
     cf apps | grep OK || cf login
