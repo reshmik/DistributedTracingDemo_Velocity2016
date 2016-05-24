@@ -1,7 +1,8 @@
 dependencies {
+    compile "org.springframework:spring-jdbc"
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "org.springframework.cloud:spring-cloud-sleuth-zipkin-stream"
     compile "org.springframework.cloud:spring-cloud-starter-stream-rabbit"
     compile "org.springframework.amqp:spring-amqp:${amqpVersion}"
-    compile "io.zipkin:zipkin-ui:1.40.0"
+    compile "io.zipkin:zipkin-ui:1.40.1"
 }
