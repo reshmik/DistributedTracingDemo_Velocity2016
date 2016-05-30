@@ -4,7 +4,6 @@
 	​
 	<springProperty scope="context" name="springAppName" source="spring.application.name"/>
 	<!-- Example for logging into the build folder of your project -->
-
 	<property name="LOG_FILE" value="${BUILD_FOLDER:-build}/${springAppName}"/>​
 
 	<property name="CONSOLE_LOG_PATTERN"
@@ -50,14 +49,15 @@
 				<pattern>
 					<pattern>
 						{
-						"thread": "%thread",
 						"level": "%level",
-						"logger": "%logger{40}",
-						"message": "%message",
-						"pid": "${PID:-}",
+						"service", "${springAppName:-}",
 						"trace": "%X{X-B3-TraceId:-}",
 						"span": "%X{X-B3-SpanId:-}",
-						"exportable": "%X{X-Span-Export:-}"
+						"exportable": "%X{X-Span-Export:-}",
+						"pid": "${PID:-}",
+						"thread": "%thread",
+						"logger": "%logger{40}",
+						"message": "%message"
 						}
 					</pattern>
 				</pattern>
