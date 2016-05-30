@@ -1,4 +1,5 @@
 dependencies {
+    runtime 'org.hsqldb:hsqldb'
     compile "org.springframework:spring-jdbc"
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "org.springframework.cloud:spring-cloud-sleuth-zipkin-stream"
