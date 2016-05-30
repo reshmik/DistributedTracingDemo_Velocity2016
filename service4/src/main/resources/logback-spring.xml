@@ -49,15 +49,15 @@
 				<pattern>
 					<pattern>
 						{
-						"level": "%level",
+						"severity": "%level",
 						"service": "${springAppName:-}",
 						"trace": "%X{X-B3-TraceId:-}",
 						"span": "%X{X-B3-SpanId:-}",
 						"exportable": "%X{X-Span-Export:-}",
 						"pid": "${PID:-}",
 						"thread": "%thread",
-						"logger": "%logger{40}",
-						"message": "%message"
+						"class": "%logger{40}",
+						"rest": "%message"
 						}
 					</pattern>
 				</pattern>
