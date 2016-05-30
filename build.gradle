@@ -70,6 +70,8 @@ configure(subprojects) {
         compile "org.springframework.boot:spring-boot-starter-actuator"
         compile "org.aspectj:aspectjrt"
         compile "org.springframework.amqp:spring-amqp:${amqpVersion}"
+        // for JSON logging
+        runtime 'net.logstash.logback:logstash-logback-encoder:4.6'
 
         runtime 'org.aspectj:aspectjweaver'
     }
