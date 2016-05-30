@@ -55,7 +55,7 @@
 						"message": "%message",
 						"pid": "${PID:-}",
 						"trace": "%X{X-B3-TraceId:-}",
-						"span": "%X{X-B3-SpanId:-}"
+						"span": "%X{X-B3-SpanId:-}",
 						"exportable": "%X{X-Span-Export:-}"
 						}
 					</pattern>
