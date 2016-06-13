@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 DEFAULT_HEALTH_HOST=${DEFAULT_HEALTH_HOST:-localhost}
 mkdir -p build
 

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # build apps
 ./gradlew clean build --parallel
 
