@@ -72,6 +72,7 @@ configure(subprojects) {
         compile "org.springframework.amqp:spring-amqp:${amqpVersion}"
         // for JSON logging
         runtime('net.logstash.logback:logstash-logback-encoder:4.6') {
+            // https://github.com/logstash/logstash-logback-encoder/issues/153
             exclude group: "ch.qos.logback", module: "logback-core"
         }
 
