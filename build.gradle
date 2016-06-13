@@ -71,7 +71,9 @@ configure(subprojects) {
         compile "org.aspectj:aspectjrt"
         compile "org.springframework.amqp:spring-amqp:${amqpVersion}"
         // for JSON logging
-        runtime 'net.logstash.logback:logstash-logback-encoder:4.6'
+        runtime('net.logstash.logback:logstash-logback-encoder:4.6') {
+            exclude group: "ch.qos.logback", module: "logback-core"
+        }
 
         runtime 'org.aspectj:aspectjweaver'
     }
