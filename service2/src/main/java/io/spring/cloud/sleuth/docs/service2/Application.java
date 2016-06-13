@@ -2,6 +2,7 @@ package io.spring.cloud.sleuth.docs.service2;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.io.IOException;
 import java.lang.invoke.MethodHandles;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
@@ -16,9 +17,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.sleuth.Span;
 import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
@@ -81,7 +84,28 @@ public class Application {
 		SimpleClientHttpRequestFactory clientHttpRequestFactory = new SimpleClientHttpRequestFactory();
 		clientHttpRequestFactory.setConnectTimeout(2000);
 		clientHttpRequestFactory.setReadTimeout(3000);
-		return new RestTemplate(clientHttpRequestFactory);
+		RestTemplate restTemplate = new RestTemplate(clientHttpRequestFactory);
+		restTemplate.setErrorHandler(new DefaultResponseErrorHandler() {
+			@Override public boolean hasError(ClientHttpResponse response)
+					throws IOException {
+				try {
+					return super.hasError(response);
+				} catch (Exception e) {
+					return true;
+				}
+			}
+
+			@Override public void handleError(ClientHttpResponse response)
+					throws IOException {
+				try {
+					super.handleError(response);
+				} catch (Exception e) {
+					log.error("Exception occurred while trying to send the request", e);
+					throw e;
+				}
+			}
+		});
+		return restTemplate;
 	}
 
 	public static void main(String... args) {
