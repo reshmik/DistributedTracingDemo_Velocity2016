@@ -13,7 +13,7 @@ allprojects {
     apply plugin: 'java'
 }
 
-configure(subprojects - project(":acc")) {
+configure(subprojects) {
 
     apply plugin: 'java'
     apply plugin: 'eclipse'
