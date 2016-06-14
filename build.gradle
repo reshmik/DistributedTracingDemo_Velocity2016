@@ -13,7 +13,7 @@ allprojects {
     apply plugin: 'java'
 }
 
-configure(subprojects) {
+configure(subprojects - project(":acc")) {
 
     apply plugin: 'java'
     apply plugin: 'eclipse'
@@ -55,11 +55,17 @@ configure(subprojects) {
         maven {
             url "http://repo.spring.io/milestone"
         }
+        maven {
+            url "http://repo.spring.io/libs-release-local"
+        }
+       maven {
+           url "http://repo.spring.io/libs-staging-local/"
+        }
     }
 
     dependencyManagement {
         imports {
-            mavenBom "org.springframework.cloud:spring-cloud-dependencies:$BOM_VERSION"
+            mavenBom "org.springframework.cloud:spring-cloud-starter-parent:$BOM_VERSION"
         }
     }
 
@@ -71,10 +77,7 @@ configure(subprojects) {
         compile "org.aspectj:aspectjrt"
         compile "org.springframework.amqp:spring-amqp:${amqpVersion}"
         // for JSON logging
-        runtime('net.logstash.logback:logstash-logback-encoder:4.6') {
-            // https://github.com/logstash/logstash-logback-encoder/issues/153
-            exclude group: "ch.qos.logback", module: "logback-core"
-        }
+        runtime 'net.logstash.logback:logstash-logback-encoder:4.6'
 
         runtime 'org.aspectj:aspectjweaver'
     }
