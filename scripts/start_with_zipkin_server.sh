@@ -18,10 +18,10 @@ docker-compose build
 docker-compose up -d
 
 echo -e "\nStarting Zipkin Server..."
-nohup $JAVA_HOME/bin/java "$MEM_ARGS $DEFAULT_ARGS" -jar zipkin-server/build/libs/*.jar > build/zipkin-server.log &
+nohup $JAVA_HOME/bin/java "$MEM_ARGS" "$DEFAULT_ARGS" -jar zipkin-server/build/libs/*.jar > build/zipkin-server.log &
 
 echo -e "\nStarting the apps..."
-nohup $JAVA_HOME/bin/java "$MEM_ARGS $DEFAULT_ARGS" -jar service1/build/libs/*.jar > build/service1.log &
-nohup $JAVA_HOME/bin/java "$MEM_ARGS $DEFAULT_ARGS" -jar service2/build/libs/*.jar > build/service2.log &
-nohup $JAVA_HOME/bin/java "$MEM_ARGS $DEFAULT_ARGS" -jar service3/build/libs/*.jar > build/service3.log &
-nohup $JAVA_HOME/bin/java "$MEM_ARGS $DEFAULT_ARGS" -jar service4/build/libs/*.jar > build/service4.log &
+nohup $JAVA_HOME/bin/java "$MEM_ARGS" "$DEFAULT_ARGS" -jar service1/build/libs/*.jar > build/service1.log &
+nohup $JAVA_HOME/bin/java "$MEM_ARGS" "$DEFAULT_ARGS" -jar service2/build/libs/*.jar > build/service2.log &
+nohup $JAVA_HOME/bin/java "$MEM_ARGS" "$DEFAULT_ARGS" -jar service3/build/libs/*.jar > build/service3.log &
+nohup $JAVA_HOME/bin/java "$MEM_ARGS" "$DEFAULT_ARGS" -jar service4/build/libs/*.jar > build/service4.log &
