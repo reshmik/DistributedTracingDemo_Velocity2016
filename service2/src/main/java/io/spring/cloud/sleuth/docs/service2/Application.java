@@ -100,7 +100,7 @@ public class Application {
 				try {
 					super.handleError(response);
 				} catch (Exception e) {
-					log.error("Exception occurred while trying to send the request", e);
+					log.error("Exception [" + e.getMessage() + "] occurred while trying to send the request", e);
 					throw e;
 				}
 			}
