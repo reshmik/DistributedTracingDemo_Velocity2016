@@ -5,3 +5,5 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
+
+logging.level.org.springframework.cloud.sleuth: DEBUG
