@@ -16,7 +16,7 @@ public class Application {
 	private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@RequestMapping("/bar")
-	public String start() throws InterruptedException {
+	public String service3MethodInController() throws InterruptedException {
 		Thread.sleep(300);
 		log.info("Hello from service3");
 		return "Hello from service3";

@@ -56,7 +56,7 @@ public class Application {
 	}
 
 	@RequestMapping("/foo")
-	public String start() throws InterruptedException {
+	public String service2MethodInController() throws InterruptedException {
 		Thread.sleep(200);
 		log.info("Hello from service2. Calling service3 and then service4");
 		String service3 = restTemplate.getForObject("http://" + serviceAddress3 + "/bar", String.class);
