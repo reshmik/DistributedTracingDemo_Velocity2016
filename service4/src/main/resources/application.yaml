@@ -1,9 +1,0 @@
-server.port: 8084
-spring:
-  application:
-    name: service4
-  sleuth:
-    sampler:
-      percentage: 1.0
-
-logging.level.org.springframework.cloud.sleuth: DEBUG

@@ -1,9 +1,0 @@
-server.port: 8083
-spring:
-  application:
-    name: service3
-  sleuth:
-    sampler:
-      percentage: 1.0
-
-logging.level.org.springframework.cloud.sleuth: DEBUG

@@ -1,0 +1,12 @@
+---
+applications:
+- name: acme-financial-account-microservice
+  memory: 512M
+  instances: 1
+  host: acme-financial-account-microservice
+  path: build/libs/acme-financial-account-microservice-1.0.0.jar
+  services:
+    - rabbitmq_stream
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    DEBUG: "true"

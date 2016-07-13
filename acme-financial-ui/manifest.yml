@@ -1,0 +1,13 @@
+---
+applications:
+- name: acme-financial-ui
+  memory: 512M
+  instances: 1
+  host: acme-financial-ui
+  path: build/libs/acme-financial-ui-1.0.0.jar
+  services:
+    - rabbitmq_stream
+  env:
+    SPRING_PROFILES_ACTIVE: cloud
+    DEBUG: "true"
+    SERVICE2_ADDRESS: acme-financial-back-office-microservice.cfapps.io

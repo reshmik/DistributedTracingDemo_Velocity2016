@@ -1,2 +1,2 @@
 rootProject.name = "doc-apps"
-include 'service1', 'service2', 'service3', 'service4', 'zipkin-server', 'acceptance-tests'
+include 'acme-financial-ui', 'acme-financial-back-office-microservice', 'acme-financial-account-microservice', 'acme-financial-customer-microservice', 'zipkin-server', 'acceptance-tests'
