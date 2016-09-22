@@ -1,4 +1,4 @@
-package io.spring.cloud.sleuth.docs.service2;
+package io.spring.cloud.sleuth.docs.backofficemicroservice;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
@@ -33,8 +33,10 @@ public class Application {
 
 	@Autowired RestTemplate restTemplate;
 	@Autowired Tracer tracer;
-	@Value("${service3.address:localhost:8083}") String serviceAddress3;
-	@Value("${service4.address:localhost:8084}") String serviceAddress4;
+
+
+	@Value("${accountmicroservice.address:localhost:8083}") String accountMicroserviceAddress;
+	@Value("${customermicroService.address:localhost:8084}") String customerMicroServiceAddress;
 	private static final int MOCK_PORT = 8765;
 
 	WireMock wireMock = new WireMock(MOCK_PORT);
@@ -52,15 +54,20 @@ public class Application {
 		wireMockServer.shutdown();
 	}
 
+	@RequestMapping("/")
+	public String frontPage() throws InterruptedException {
+		log.info("Front Page");
+		return "Front Page";
+	}
+
 	@RequestMapping("/startOfBackOffice-Service")
-	public String service2MethodInController() throws InterruptedException {
-		Thread.sleep(200);
+	public String backOfficeMicroServiceController() throws InterruptedException {
 		log.info("Hello from Acme Financial's Backend service. Calling Acme Financial's Account Microservice and then Customer Microservice");
-		String service3 = restTemplate.getForObject("http://" + serviceAddress3 + "/startOfAccount-Microservice", String.class);
-		log.info("Got response from Acme Financial's Account Service [{}]", service3);
-		String service4 = restTemplate.getForObject("http://" + serviceAddress4 + "/startOfCustomer-Microservice", String.class);
-		log.info("Got response from Acme Financial's Customer Service [{}]", service4);
-		return String.format("Hello from Acme Financial's Backend service. Calling Acme Financial's Account Service [%s] and then Customer Service [%s]", service3, service4);
+		String accountMicroservice = restTemplate.getForObject("http://" + accountMicroserviceAddress + "/startOfAccount-Microservice", String.class);
+		log.info("Got response from Acme Financial's Account Service [{}]", accountMicroservice);
+		String customerMicroService = restTemplate.getForObject("http://" + customerMicroServiceAddress + "/startOfCustomer-Microservice", String.class);
+		log.info("Got response from Acme Financial's Customer Service [{}]", customerMicroService);
+		return String.format("Hello from Acme Financial's Backend service. Calling Acme Financial's Account Service [%s] and then Customer Service [%s]", accountMicroservice, customerMicroService);
 	}
 
 	@RequestMapping("/readtimeout")

@@ -1,4 +1,4 @@
-package io.spring.cloud.sleuth.docs.service3;
+package io.spring.cloud.sleuth.docs.customermicroservice;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,11 +15,17 @@ public class Application {
 
 	private static final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-	@RequestMapping("/startOfAccount-Microservice")
-	public String service3MethodInController() throws InterruptedException {
-		Thread.sleep(2000);
-		log.info("Hello from Acme Financial's Account Microservice");
-		return "Hello from Acme Financial's Account Microservice";
+
+	@RequestMapping("/startOfCustomer-Microservice")
+	public String customerMicroServiceController() throws InterruptedException {
+		log.info("Hello from Acme's Customer Microservice");
+		return "Hello from Acme's Customer Microservice";
+	}
+
+	@RequestMapping("/")
+	public String frontPage() throws InterruptedException {
+		log.info("Front Page");
+		return "Front Page";
 	}
 
 	public static void main(String... args) {

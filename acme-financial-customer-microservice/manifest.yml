@@ -3,7 +3,7 @@ applications:
 - name: acme-financial-customer-microservice
   memory: 512M
   instances: 1
-  host: acme-financial-customer-microservice
+  host: acme-financial-customer-microservice-12
   path: build/libs/acme-financial-customer-microservice-1.0.0.jar
   services:
     - rabbitmq_stream

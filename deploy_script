@@ -1,0 +1,12 @@
+
+cd acme-financial-account-microservice
+cf push
+cd ..
+cd acme-financial-back-office-microservice
+cf push
+cd ..
+cd acme-financial-customer-microservice
+cf push
+cd ..
+cd acme-financial-ui
+cf push
